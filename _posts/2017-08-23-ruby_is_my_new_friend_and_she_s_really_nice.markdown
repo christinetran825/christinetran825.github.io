@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Ruby is my new friend, and she’s really nice. :]"
-date:   2017-08-23 17:05:37 +0000
+date:   2017-08-23 13:05:38 -0400
 ---
 
 
@@ -17,6 +17,7 @@ So far my biggest question was whether or not when writing our code or definitio
 
 **SPEC CODE:**
 
+```
 describe "fizzbuzz" do
   it 'returns "Fizz" when the number is divisible by 3' do
     fizz_3 = fizzbuzz(3)
@@ -39,15 +40,18 @@ describe "fizzbuzz" do
     expect(fizz_4).to eq(nil)
   end
 end
+```
 
 **MY CODE:**
 
+```
 def fizzbuzz(number) 
-  if number % 3 == 0 "Fizz"
-  elsif number % 5 == 0 "Buzz"
-  elsif number % 3 == 0 && number % 5 == 0 "FizzBuzz"
-  end
+  if number % 3 == 0 "Fizz" #spec said '...number is divisible by 3' first
+  elsif number % 5 == 0 "Buzz" #spec said '...number is divisible by 5' second
+  elsif number % 3 == 0 && number % 5 == 0 "FizzBuzz" #spec said '...number is not divisible by 3 or 5' third
+  end #expect(fizz_4).to eq(nil) last expectation is nil/false
 end
+```
 
 When running my code it didn’t pass. I thought I had written the code according to the expectations.
 
@@ -59,15 +63,17 @@ Here's the correct code:
 
 **MY CODE:**
 
+```
 def fizzbuzz(number) 
-  if number % 3 == 0 && number % 5 == 0 "FizzBuzz"
+  if number % 3 == 0 && number % 5 == 0 "FizzBuzz" #switch the arrangement of this code so it can implicitly return nil/false.
   elsif number % 3 == 0 "Fizz"
   elsif number % 5 == 0 "Buzz"
   end
 end
+```
 
 
-That new set passed everything. It implicitly returns nil. I had to switched the arrangement of the conditionals to get rid of the wordy nil statement (elsif number % 3 == 0 && number % 5 == 0 "FizzBuzz" if placed before the end statement of the if block.
+That new set passed everything. It implicitly returns nil. I had to switched the arrangement of the conditionals to get rid of the wordy nil statement (elsif number % 3 == 0 && number % 5 == 0 "FizzBuzz") if placed before the end statement of the if block.
 The spec file just threw me off. The file just says I expect this, this, and that. Since I was working on the bootcamp prep courses, I was following along their test files, to make the code pass. That was a poor way of going about writing or testing codes. I guess I was in a Javascript mindset. Reading tests are very important. It's not stated that the spec file "directions" should have to be followed explicitly.
 
 
