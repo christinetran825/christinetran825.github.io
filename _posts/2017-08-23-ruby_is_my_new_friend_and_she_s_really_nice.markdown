@@ -46,10 +46,10 @@ end
 
 ```
 def fizzbuzz(number) 
-  if number % 3 == 0 "Fizz" #spec said '...number is divisible by 3' first
-  elsif number % 5 == 0 "Buzz" #spec said '...number is divisible by 5' second
-  elsif number % 3 == 0 && number % 5 == 0 "FizzBuzz" #spec said '...number is not divisible by 3 or 5' third
-  end #expect(fizz_4).to eq(nil) last expectation is nil/false
+  if number % 3 == 0 "Fizz"      #spec said '...number is divisible by 3' first
+  elsif number % 5 == 0 "Buzz"      #spec said '...number is divisible by 5' second
+  elsif number % 3 == 0 && number % 5 == 0 "FizzBuzz"        #spec said '...number is not divisible by 3 or 5' third
+  end             #expect(fizz_4).to eq(nil) last expectation is nil/false
 end
 ```
 
@@ -65,7 +65,7 @@ Here's the correct code:
 
 ```
 def fizzbuzz(number) 
-  if number % 3 == 0 && number % 5 == 0 "FizzBuzz" #switch the arrangement of this code so it can implicitly return nil/false.
+  if number % 3 == 0 && number % 5 == 0 "FizzBuzz"   #switch the arrangement of this code so it can implicitly return nil/false.
   elsif number % 3 == 0 "Fizz"
   elsif number % 5 == 0 "Buzz"
   end
