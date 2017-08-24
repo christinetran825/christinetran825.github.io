@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Tic Tac Toe Game - Ruby style"
-date:   2017-08-23 20:49:26 +0000
+date:   2017-08-23 16:49:27 -0400
 ---
 
 
@@ -110,8 +110,8 @@ Taking the pseudocode, I’ll start building my code.
    Now that the program is reading the user_input's number as an integer, we can tell it to make a move by placing the player's choice of "X" or "O." We have to define how to move a piece (X or O) on the board.
   
    ```
-   def move(board, index, first_player = "X")
-     board[index] = first_player
+   def move(board, index, player)
+     board[index] = player
    end
    ```
 	 
@@ -143,43 +143,7 @@ Taking the pseudocode, I’ll start building my code.
   
 	Helper Methods are now display_board(board), valid_move?(board, index), position_taken?(board, index), input_to_index(user_input), and move(board, index, first_player = "X")
 
-	 
-```
-def turn(board)
-  puts "Please enter 1-9:"      <=  program asks user to enter a position number (1-9) 
-  user_input = gets.strip      <=  user enters a number
-  index = input_to_index(user_input)      <=  that number will convert to an index.
-  if valid_move?(board, index)      <=  if valid_move? Remains true ...
-     move(board, index, first_player = "X")      <= ... then move the piece
-  else        
-     until index == 0    <=  if not, until the user’s input number is correctly converted into an index and is true,
-		   puts "Please enter 1-9:"     <=  then the program will continuously asked the user to keep entering a valid number. 
-       user_input = gets.strip
-       index = input_to_index(user_input)
-         if valid_move?(board, index)
-           move(board, index, first_player = "X")     <=  Once user inputs a correct number within 1-9, then the move is validated. 
-         end
-     end
-   end
-  display_board(board)     <=  Shows the board after the move is made.
-end
-```
-
-##### Time to Play
-
-When playing the game, the players play until someone wins or there's a tie. It keeps going until there's a condition for it to stop. That condition is either win or tie. In other words, we are looping this play. We start the game at 0 until we fill up the 9 squares or until someone wins or there's a tie.
-
-```
-def play(board)
-  counter = 0
-  until counter == 9   <= until the 9 squares are filled up
-    turn(board)
-    counter += 1   <= we iterate a move by 1
-  end
-end
-```
-
-Although we are playing the game, we need to know who's turn it is and to place X or O. We do this by defining turn_count(board) and current_player(board) methods. 
+While playing the game, we need to know who's turn it is and to place X or O. We do this by defining turn_count(board) and current_player(board) methods. 
 
 ```
 def turn_count(board)
@@ -193,12 +157,36 @@ def turn_count(board)
 end
 ```
 
-
 ```
 def current_player(board)
   turn_count(board) % 2 == 0 ? "X" : "O"
 end
 ```
+	 
+	 
+###### turn method
+```
+def turn(board)
+  puts "Please enter 1-9:"    #program asks user to enter a position number (1-9) 
+  user_input = gets.strip      #user enters a number
+  index = input_to_index(user_input)     #that number will convert to an index.
+  if valid_move?(board, index)      #  if valid_move? is true ...
+     move(board, index, current_player(board))   # ... then move on the board, on the index user chose, the player's X or O.
+  else        
+     turn(board)  #  if not, until the user’s input number is correctly converted into an index and is true, then the program will continuously asked the user to keep entering a valid number. Once user inputs a correct number within 1-9, then the move is validated. 
+   end
+  display_board(board)     # Shows the board after the move is made.
+end
+```
+
+The turn method threw off my test while I was working on the lab. The problem lied in the if statement block of move(board, index, current_player(board)). See below code. What I forgot about ruby were many things - method calls (or sends) values; while defining a method accepts values. We should try to think of methods as a dictionary. A dictionary defines a word and gives it a meaning. So, when we are defining a "word", we are defining a "method" in Ruby. When calling a method or the word, it sends a value. Here's how I figured out the if statement to clear my confusion.
+
+The if statement of method #turn has 3 helper methods - valid_move?(board, index), move(board, index, current_player(board)), and current_player(board). Their individual definitions will help us place an X or an O on the index/square on the board.
+
+###### turn method - if statement
+
+The definition of valid_move?(board, index) is that if an index is between numbers 0 to 8 AND it's position is NOT(!) taken, then it must be true. Given this definition, then the if statement of method #turn says to make a move on the board to the index stated and place the current_player's token. That's all there's to it for the if statement.
+
 
 ##### So who's the winner?
 
@@ -245,12 +233,8 @@ def won?(board)
     position_2 = board[win_index_2] # load the value of the board at win_index_2
     position_3 = board[win_index_3] # load the value of the board at win_index_3
 
-    if (position_1 == "X" && position_2 == "X" && position_3 == "X") || (position_1 == "O" && position_2 == "O" && position_3 == "O")
-      win_set = [win_index_1, win_index_2, win_index_3]
-      return win_set # return the win_combination indexes that won.
-    end
+   position_1 == position_2 && position_2 == position_3 && position_taken?(board, win_index_1) #detect returns first element (position_1) & make sure position is taken (that it's either an X or O).
   end
-  false
 end
 ```
 
@@ -281,8 +265,6 @@ Returns true if the board has been won, is a draw, or is full.
 def over?(board)
   if draw?(board) || won?(board) || full?(board)
     return true
-  else
-    return false
   end
 end
 ```
@@ -297,11 +279,49 @@ def winner(board)
 end
 ```
 
-END of Tic Tac Toes
+##### Time to Play
+
+When playing the game, the players play until someone wins or there's a tie. It keeps going until there's a condition for it to stop. That condition is either win or tie. In other words, we are looping this play. We start the game at 0 until we fill up the 9 squares or until someone wins or there's a tie.
+
+```
+Play Method A
+
+def play(board)
+  counter = 0
+  until counter == 9   <= until the 9 squares are filled up
+    turn(board)
+    counter += 1   <= we iterate a move by 1
+  end
+end
+```
+
+Play Method A was the first iteration of the method. Play Method B is the final updated method. We're no longer counting the game is over until all the 9 squares are filled up. We're counting the game until it is over as each player takes their turn. After they play a few turns, either there's a winner or a draw. If there's a winner, we have to call on the winner(board) method and put out a message.
+
+```
+Play Method B
+
+def play(board)
+  #input = gets
+  until over?(board) #until the game is over...
+    turn(board) #players will keep taking turns
+  end
+  #plays the first few turns of the game
+    if won?(board) #if there's a winner...
+      winner(board) == "X" || winner(board) == "O" #we check who the winner is...
+        puts "Congratulations #{winner(board)}!" #and congratulate them
+    elsif draw?(board) #if there's a draw, then print the below strings
+      puts "Cats Game!"
+    end
+end
+
+```
+
+
+END of Tic Tac Toes.
 
 
 #### I'm tired of Tic Tac Toes... -_-
 
-I wish I could've started out this way to begin with while learning Ruby but I guess it worked out the best. I have a better understanding of Ruby, tests, and CLI. I just hope I can apply what I've done within this post to future labs and work. Otherwise, I don't know what I'm doing....
+I hope all this makes sense to someone. Or at least be helpful. I try to be pithy when giving instructions, descriptions, or other forms of info, but I often say more than I should. Maybe with coding and programming, the more info give the better? I have a better understanding of Ruby, tests, and CLI, now, but hope to make it crystal clear soon. I just hope I can apply what I've done within this post to future labs. Otherwise, I don't know what I'm doing....
 
 ![](http:///i.imgur.com/KBdf4fl.jpg")
