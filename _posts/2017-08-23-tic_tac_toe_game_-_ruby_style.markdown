@@ -7,7 +7,9 @@ date:   2017-08-23 16:49:27 -0400
 
 ![](http://i.imgur.com/GNwr0AJ.jpg)
 
-Argh…. This was a challenge despite the labs going over each step to build the game. Everything lead up to the final build and play method.
+Argh!!!!!!!!
+
+This was a challenge despite the labs going over each step to build the game. Everything lead up to the final build and play method.
 
 What is a helper method. How does it work?
 
