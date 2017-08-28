@@ -1,0 +1,21 @@
+# Site settings
+title: Christine is Coding
+header-img: img/home-bg.png
+email: christinetran825@gmail.com
+copyright_name: christinetran825
+description: > # this means to ignore newlines until "baseurl:"
+  Novice Hunter and Writer of Codes
+baseurl: "" # the subpath of your site, e.g. /blog
+twitter_username: 
+github_username:  christinetran825
+learn_profile: christinetran825
+email_username: christinetran825@gmail.com
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+paginate: 5
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+
+gems: [jekyll-paginate, jekyll-feed]
