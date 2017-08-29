@@ -49,7 +49,7 @@ I guess you can say the above outline is our pseudocode. Writing things/instruct
 
 Taking the pseudocode, I’ll start building my code.
 
-##### Build the Board
+### Build the Board
 
  * *A Tic Tac Toe board uses an array of strings (“ “)*
 
@@ -166,7 +166,7 @@ end
 ```
 	 
 	 
-###### turn method
+### turn method
 ```
 def turn(board)
   puts "Please enter 1-9:"    #program asks user to enter a position number (1-9) 
@@ -185,12 +185,12 @@ The turn method threw off my test while I was working on the lab. The problem li
 
 The if statement of method #turn has 3 helper methods - valid_move?(board, index), move(board, index, current_player(board)), and current_player(board). Their individual definitions will help us place an X or an O on the index/square on the board.
 
-###### turn method - if statement
+#### turn method - if statement
 
 The definition of valid_move?(board, index) is that if an index is between numbers 0 to 8 AND it's position is NOT(!) taken, then it must be true. Given this definition, then the if statement of method #turn says to make a move on the board to the index stated and place the current_player's token. That's all there's to it for the if statement.
 
 
-##### So who's the winner?
+#### So who's the winner?
 
    * There are 8 ways or combinations of how a player can win at Tic Tac Toe.
       * Winners win by having matching X’s or O’s in:
@@ -281,7 +281,7 @@ def winner(board)
 end
 ```
 
-##### Time to Play
+### Time to Play
 
 When playing the game, the players play until someone wins or there's a tie. It keeps going until there's a condition for it to stop. That condition is either win or tie. In other words, we are looping this play. We start the game at 0 until we fill up the 9 squares or until someone wins or there's a tie.
 
@@ -322,7 +322,7 @@ end
 END of Tic Tac Toes.
 
 
-#### I'm tired of Tic Tac Toes... -_-
+## I'm tired of Tic Tac Toes... -_-
 
 I hope all this makes sense to someone. Or at least be helpful. I try to be pithy when giving instructions, descriptions, or other forms of info, but I often say more than I should. Maybe with coding and programming, the more info give the better? I have a better understanding of Ruby, tests, and CLI, now, but hope to make it crystal clear soon. I just hope I can apply what I've done within this post to future labs. Otherwise, I don't know what I'm doing....
 
