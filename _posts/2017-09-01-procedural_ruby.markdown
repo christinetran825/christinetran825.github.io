@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Procedural Ruby"
-date:   2017-09-01 05:17:04 +0000
+date:   2017-09-01 01:17:04 -0400
 ---
 
 
@@ -15,7 +15,7 @@ I'm feeling like that mouse right now.
 
 Here's what I'm understanding about these confounded methods.
 
-#### Loops
+### Loops
 
 * Tells program to do the same thing over and over again. It's not explicit (literal), it's abstract meaning we have to remove details
 
@@ -23,7 +23,7 @@ Here's what I'm understanding about these confounded methods.
 
 * To stop we must tell the loop to take a ```break``` OR have it ```count``` to a certain stopping point.
 
-#### Arrays
+### Arrays
 
 * Stores a list of data.
 
@@ -33,7 +33,7 @@ Here's what I'm understanding about these confounded methods.
 
 * An array can be full of strings, numbers, or a combination of both.
 
-###### We can ADD and REMOVE elements to/from an array
+### We can ADD and REMOVE elements to/from an array
 
 * ADDING
    * shovel ```<<```  : adds items to the END of the array
@@ -49,7 +49,7 @@ Here's what I'm understanding about these confounded methods.
 
 Other methods to manipulate arrays - [https://docs.ruby-lang.org/en/2.0.0/Array.html#method-i-delete_at)
 
-###### Working with Arrays
+### Working with Arrays
 
 Accessing elements
    * ```.first``` : access first element
@@ -67,7 +67,7 @@ Here are a few of the methods we can use on an array:
 * ```.size``` : returns the number of elements in the array; the return value is the actual number of elements in the array, starting from 1
 
 
-###### Iteration and Abstraction (-_-)
+### Iteration and Abstraction (-_-)
 
 ***I have to remind myself of the following:***
 
