@@ -150,14 +150,14 @@ array.each_index {|index| puts "#{index}: #{array[index]}" }
 #2: "orange"
 ```
 
-2. ```.each_with_index```
+2. ```.each.with_index```
 
 ```
-# Similar to Example 1, we have .each method + .with_index method. This new method (.each_with_index) is the same as .each, except now the method takes an optional parameter and the index can start from a number other than 0.
+# Similar to Example 1, we have .each method + .with_index method. This new method (.each.with_index) is the same as .each, except now the method takes an optional parameter and the index can start from a number other than 0.
 
 array = ["apple", "pear", "orange"]
 
-array.each_with_index(2) {|index| puts "#{index}: #{array[index]}" }
+array.each.with_index(2) {|index| puts "#{index}: #{array[index]}" }
 
 #prints:
 #2: "apple"
