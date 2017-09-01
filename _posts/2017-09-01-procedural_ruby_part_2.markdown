@@ -28,7 +28,7 @@ converts a string into an array
 converts a range to an array
 
 
-### Converting Array to string
+**Converting Array to string**
 
 ```
 .join
@@ -37,7 +37,7 @@ converts a range to an array
 * .join has an optional argument in which you can insert between each array element when they're a string
 * without the argument it connects the array as one whole string
 
-### Oxford Comma Lab
+**Oxford Comma Lab**
 
 BOY! was this lab hard! However, I do like that this lab touched on the Oxford Comma. I'm all for the Oxford. I don't see how people still get away with not writing in the [Oxford comma rule](https://www.grammarly.com/blog/what-is-the-oxford-comma-and-why-do-people-care-so-much-about-it/).
 
@@ -61,7 +61,7 @@ end
 #
 ```
 
-### Deli Counter
+**Deli Counter**
 
 Have I mentioned I don't like iterators and loops? Now, I would like to add Enumerators to the list. Arrgh!
 
