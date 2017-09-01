@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Procedural Ruby Part. 2"
-date:   2017-09-01 19:23:32 +0000
+date:   2017-09-01 15:23:33 -0400
 ---
 
 
@@ -173,7 +173,9 @@ def reverse_each_word(sentence)
 end
 ```
 
-### Yield and Blocks
+
+
+## Yield and Blocks
 
 The ```yield``` keyword stops a code and then executes another blocked code before preceeding with the rest of the code. Let's put it in a traffic stop example since we're playing with the word "yield" :p
 
