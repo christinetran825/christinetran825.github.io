@@ -243,7 +243,7 @@ From: /home/christinetran825-39939/code/labs/my-collect-v-000/lib/my_collect.rb 
 [2] pry(main)> exit
 ```
 
-* In essence, the method call stated above included a block code that ```yield``` applied during its while loop. That block of code for the method call can be written like so.
+* In essence, when the code is run and reaches the ```yield``` line, it is going to send whatever that's being passed (in this case, the array) to the block with the method call stated above.
 
 ```#my_collect(["Tim Jones", "Tom Smith", "Jim Campagno"]) { |name| name.split(" ").first }```
 
