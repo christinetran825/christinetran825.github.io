@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Procedural Ruby"
+title:  "Procedural Ruby Part. 1"
 date:   2017-09-01 01:17:04 -0400
 ---
 
