@@ -16,7 +16,7 @@ I'm feeling like that mouse right now.
 Here's what I'm understanding about these confounded methods.
 
 
-**Loops**
+## **Loops**
 
 * Tells program to do the same thing over and over again. It's not explicit (literal), it's abstract meaning we have to remove details
 
@@ -50,7 +50,7 @@ Here's what I'm understanding about these confounded methods.
    
    * ```.shift``` : removes FIRST item from the FRONT of the array; returns the element that was removed
 
-Other methods to manipulate arrays - [https://docs.ruby-lang.org/en/2.0.0/Array.html#method-i-delete_at)
+Other methods to manipulate arrays - []([https://docs.ruby-lang.org/en/2.0.0/Array.html#method-i-delete_at)
 
 **Working with Arrays**
 
