@@ -13,13 +13,13 @@ This week I learned about converting data types.
 
 There are a variety of methods to help us convert data types.
 
-### Converting data types to Array
+**Converting data types to array**
 
 ```
 .split
 ```
 
-converts a string into an array
+**Converts a string into an array**
 
 ```
 .to_a
@@ -28,7 +28,7 @@ converts a string into an array
 converts a range to an array
 
 
-**Converting Array to string**
+**Converting array to string**
 
 ```
 .join
@@ -36,6 +36,7 @@ converts a range to an array
 
 * .join has an optional argument in which you can insert between each array element when they're a string
 * without the argument it connects the array as one whole string
+
 
 **Oxford Comma Lab**
 
@@ -85,7 +86,7 @@ def line(katz_deli)
 end
 ```
 
-### Collecting and Returning Values
+**Collecting and Returning Values**
 
 The ```.each``` method always returns the original array.
 
@@ -94,7 +95,7 @@ To have a different return value, we have to explicity tell it to do it. Just li
 Given that understanding, there's another method called ```.map``` (also known as ```.collect```) that does that very thing. I came across this during my google hunts of ruby, I had an idea what the examples were saying through StackFlow, but now it makes even more sense. I guess to understand what's going on with ```.map``` we have to know about ```.each``` and how to use it.
 
 
-#### Reverse Each Word Lab
+**Reverse Each Word Lab**
 
 Wow! I actually was able to pass the first half of the test without wanting to rip my hair out.
 
@@ -175,7 +176,7 @@ end
 
 
 
-## Yield and Blocks
+**Yield and Blocks**
 
 The ```yield``` keyword stops a code and then executes another blocked code before preceeding with the rest of the code. Let's put it in a traffic stop example since we're playing with the word "yield" :p
 
@@ -207,7 +208,7 @@ now we are back in the method
 
 Yields can also take parameters. Like the ```.each``` method, the block gets passed a variable in the ```|  |``` which becomes the local variable of that block that we can operate on. The parameter passed to ```yield(parameter)``` would be passed to the varaible in the ``` | | ```.
 
-###### My Collect Lab
+**My Collect Lab**
 
 This lab was a good example on how to see the process of ```yield``` and making use of  ```binding.pry```.
 
