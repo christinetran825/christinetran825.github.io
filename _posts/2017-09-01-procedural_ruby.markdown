@@ -15,8 +15,7 @@ I'm feeling like that mouse right now.
 
 Here's what I'm understanding about these confounded methods.
 
-
-## **Loops**
+**Loops**
 
 * Tells program to do the same thing over and over again. It's not explicit (literal), it's abstract meaning we have to remove details
 
