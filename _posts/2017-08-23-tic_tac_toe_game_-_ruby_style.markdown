@@ -55,7 +55,7 @@ Taking the pseudocode, I’ll start building my code.
 
     So we have to define the variable “board”
 
-    `puts board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']`
+    ```puts board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']```
 
 * *The board has 9 squares or fields that the player’s characters (X or O) are placed.*
 
