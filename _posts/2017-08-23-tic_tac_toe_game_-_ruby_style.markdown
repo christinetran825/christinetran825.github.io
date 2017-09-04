@@ -76,25 +76,27 @@ Taking the pseudocode, I’ll start building my code.
 ```
 	 board       (viewed by players)     (viewed by program)	 
 	 |   |           1 | 2 | 3                0 | 1 | 2  
- -----------       -----------              -----------
-     |   |           4 | 5 | 6                3 | 4 | 5  
- -----------       -----------              -----------
-     |   |           7 | 8 | 9                6 | 7 | 8
+   -----------       -----------              -----------
+   |   |           4 | 5 | 6                3 | 4 | 5  
+   -----------       -----------              -----------
+   |   |           7 | 8 | 9                6 | 7 | 8
 ```
 
  We would display the board from the program's point of view (an array, because programs count starting with 0) as a method (which would then be a helper method).
 
   ```
+#this is the board displaying the proper board[index] in its array format
+	
   def display_board(board)
     puts " #{board[0]} | #{board[1]} | #{board[2]} "
     puts "-----------"
     puts " #{board[3]} | #{board[4]} | #{board[5]} "
     puts "-----------"
     puts " #{board[6]} | #{board[7]} | #{board[8]} "
-  end   #this is the board displaying the proper board[index] in its array format
+  end
   ```
 	
-   Note: We are using string interpolation with #{board[0]} because it'll print (puts) the current state of the board, which method display_board will pass.
+  *Note: We are using string interpolation with #{board[0]} because it'll print (puts) the current state of the board, which method displayboard will pass.*
 		
   Ok, now that we have the board defined, we need to find out how a user will choose a square to enter their X or O. Since our board is in an array, a player wouldn't know that. A player starts counting at 1. When a user choses the field from its point of view, we need to convert it into an interger so it can match the index in the array that the program is seeing. If user enters 5 for the center position of the board, the array corresponding to it should be [4].
 	
@@ -166,16 +168,24 @@ end
 **turn method**
 
 ```
+#program asks user to enter a position number (1-9) 
+#user enters a number
+#that number will convert to an index.
+#if valid_move? is true ...
+# ... then move on the board, on the index user chose, the player's X or O.
+  #else
+	#if not, until the user’s input number is correctly converted into an index and is true, then the program will continuously asked the user to keep entering a valid number. Once user inputs a correct number within 1-9, then the move is validated.
+#Shows the board after the move is made.
+
 def turn(board)
-  puts "Please enter 1-9:"    #program asks user to enter a position number (1-9) 
-  user_input = gets.strip      #user enters a number
-  index = input_to_index(user_input)     #that number will convert to an index.
-  if valid_move?(board, index)      #  if valid_move? is true ...
-     move(board, index, current_player(board))   # ... then move on the board, on the index user chose, the player's X or O.
-  else        
-     turn(board)  #  if not, until the user’s input number is correctly converted into an index and is true, then the program will continuously asked the user to keep entering a valid number. Once user inputs a correct number within 1-9, then the move is validated. 
+  puts "Please enter 1-9:"    
+  user_input = gets.strip     
+  index = input_to_index(user_input)     
+  if valid_move?(board, index)
+     move(board, index, current_player(board))
+     turn(board)  
    end
-  display_board(board)     # Shows the board after the move is made.
+  display_board(board)
 end
 ```
 
@@ -219,7 +229,9 @@ WIN_COMBINATIONS = [
 ]
 ```
 
-So how do we determine the combinations to see who won the game? WIN_COMBINATIONS is a constant but it's the parent array to our win_combinations (the children array) A win_combination is a 3 element array of indexes that tells us the matching wins [0,1,2], [3,4,5], etc... So we have to grab each index from the |win_combination| that won.
+
+So how do we determine the combinations to see who won the game? WIN_COMBINATIONS is a constant but it's the parent array to our win_combinations (the children array). A win_combination is a 3 element array of indexes that tells us the matching wins [0,1,2], [3,4,5], etc... So we have to grab each index from the |win_combination| that won.
+
 
 ```
 def won?(board)
