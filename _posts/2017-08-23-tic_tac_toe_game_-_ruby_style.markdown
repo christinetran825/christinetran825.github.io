@@ -73,18 +73,15 @@ Taking the pseudocode, I’ll start building my code.
 	 
 	 At this point, we have our board. The board is viewed 2 ways - from the players view and the code as an array.
 	 
-	 ```
-     
-	 board       (viewed by players)     (viewed by program)
-		 
+```
+	 board       (viewed by players)     (viewed by program)	 
 	 |   |           1 | 2 | 3                0 | 1 | 2  
  -----------       -----------              -----------
      |   |           4 | 5 | 6                3 | 4 | 5  
  -----------       -----------              -----------
      |   |           7 | 8 | 9                6 | 7 | 8
- 
- ```
- 
+```
+
  We would display the board from the program's point of view (an array, because programs count starting with 0) as a method (which would then be a helper method).
 
   ```
@@ -167,6 +164,7 @@ end
 	 
 	 
 **turn method**
+
 ```
 def turn(board)
   puts "Please enter 1-9:"    #program asks user to enter a position number (1-9) 
@@ -188,7 +186,6 @@ The if statement of method #turn has 3 helper methods - valid_move?(board, index
 **turn method - if statement**
 
 The definition of valid_move?(board, index) is that if an index is between numbers 0 to 8 AND it's position is NOT(!) taken, then it must be true. Given this definition, then the if statement of method #turn says to make a move on the board to the index stated and place the current_player's token. That's all there's to it for the if statement.
-
 
 **So who's the winner?**
 
