@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Procedural Ruby Pt. 4"
-date:   2017-09-05 07:54:04 +0000
+date:   2017-09-05 03:54:05 -0400
 ---
 
 
@@ -372,6 +372,8 @@ Use a pre-defined shorthand to match specific characters
 
 **REGREX RUBY METHODS**
 
+Regrex sounds really cool. I'm having difficulties in writing the methods using the metacharacters though.
+
 ``` .scan ```
 
 * returns an array of **all** items in the string that match a given REGREX
@@ -383,6 +385,10 @@ Use a pre-defined shorthand to match specific characters
 ``` MatchData ``` 
 
 * result is usually a boolean which tells us if the pattern exists or not
+* \d matches digits
+* \w matches words
+* /[]/ matches specific single characters. Can be used to look for a range of letters or numbers - /[0-9]/, /[a-j]/
+* /[]{number}/ the pattern or character preceding {} will repeat that number of times.
 
 ``` .grep ```
 
