@@ -68,6 +68,8 @@ Here's what I'm understanding about these confounded methods.
 
 **Iterators** are methods on a collection of data (arrays and hashes) that take a block code so individual members of that array will have something happen to it. These iterators like ``` .each ``` ``` .collect ``` and ``` .select ``` are **chainable** meaning there's added functionality on top of each method.
 
+**Different iterators have different return values.** ``` .each ``` will always return the original collection on which it was called. To return a different return value, we must explicity tell the method to do so. We can do that with ``` .collect ``` or ``` .map ``` methods. 
+
 This is what I didn't understand about Enumerables/Enumerators. When calling a method on an object it returns another object which we can then call on another method onto that new object.
 
 ``` .each ```
@@ -83,6 +85,8 @@ OR
 ```
 variable_name.each { |local_variable_name| }
 ```
+
+**Block**
 
 The block body is a big piece of code set between do/end or { }.
 
@@ -163,7 +167,7 @@ array.each.with_index(2) {|index| puts "#{index}: #{array[index]}" }
 
 Taking what I learned so far about Enumerators, I still struggled trying to figure out the conference_badge lab. It took a long time, but I think I figured it out, since I passed the test.
 
-*----- Conference badget Lab *
+*----- Conference badge Lab *
 ```
 attendees = ["Edsger", "Ada", "Charles", "Alan", "Grace", "Linus", "Matz"]
 
