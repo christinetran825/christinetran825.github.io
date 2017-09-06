@@ -1,48 +1,29 @@
 ---
 layout: post
-title:  "Procedural Ruby Part. 2"
+title:  "Procedural Ruby Part. 2 - more Iterations + Yields"
 date:   2017-09-01 15:23:33 -0400
 ---
 
 
-This week I learned about converting data types.
-
-* strings to array
-* array to string
-* and more...
-
-There are a variety of methods to help us convert data types.
-
-**Converting data types to array**
-
-```
-.split
-```
-
-**Converts a string into an array**
-
-```
-.to_a
-```
-
-converts a range to an array
-
-
-**Converting array to string**
-
-```
-.join
-```
-
-* .join has an optional argument in which you can insert between each array element when they're a string
-* without the argument it connects the array as one whole string
-
-
-**Oxford Comma Lab**
-
-BOY! was this lab hard! However, I do like that this lab touched on the Oxford Comma. I'm all for the Oxford. I don't see how people still get away with not writing in the [Oxford comma rule](https://www.grammarly.com/blog/what-is-the-oxford-comma-and-why-do-people-care-so-much-about-it/).
+More iterations....
 
 ![](http://i.imgur.com/b0R6GJ1.gif)
+
+
+**Arrays, Strings & Iterations**
+
+Converting data types are important especially when it comes to iterations. There are a variety of methods to help us convert data types.
+
+* ``` .split ``` : Converts data to array
+ 
+* ``` .to_a ``` : Converts string into an array
+ 
+* ``` .join ``` : Converts an array to a string. ``` .join ``` has an optional argument in which you can insert between each array element when its converted to a string. Without the argument, it connects the array as one whole string
+
+
+*----- Oxford Comma Lab *
+
+BOY! was this lab hard! However, I do like that this lab touched on the Oxford Comma. I'm all for the Oxford. I don't see how people still get away with not writing in the [Oxford comma rule](https://www.grammarly.com/blog/what-is-the-oxford-comma-and-why-do-people-care-so-much-about-it/).
 
 I was able to pass two tests but the others were giving me so much trouble. At first I was writing multiple elsif statements but I thought to myself that that was just too much and messy. We're suppose to iterate over array elements, too, which I don't think I did here. Instead, I played around with a variety of array methods to pass the tests for 3+ elements in an array. I may have to redo this lab to include an iteration.
 
@@ -59,10 +40,11 @@ def oxford_comma(array)
   end
 end
 
-#
 ```
+*----- end lab*
 
-**Deli Counter**
+
+*----- Deli Counter Lab*
 
 Have I mentioned I don't like iterators and loops? Now, I would like to add Enumerators to the list. Arrgh!
 
@@ -85,17 +67,18 @@ def line(katz_deli)
   end
 end
 ```
+*----- end lab*
 
 **Collecting and Returning Values**
 
-The ```.each``` method always returns the original array.
+**Different iterators have different return values.** ``` .each ``` will always return the original collection on which it was called. To return a different return value, we must explicity tell the method to do so. We can do that with ``` .collect ``` or ``` .map ``` methods. 
 
 To have a different return value, we have to explicity tell it to do it. Just like the above Deli Line example. We had to create a ```current_line``` variable to store the new array. In order to called that new array we have to call it outside of the ```.each``` statement.
 
 Given that understanding, there's another method called ```.map``` (also known as ```.collect```) that does that very thing. I came across this during my google hunts of ruby, I had an idea what the examples were saying through StackFlow, but now it makes even more sense. I guess to understand what's going on with ```.map``` we have to know about ```.each``` and how to use it.
 
 
-**Reverse Each Word Lab**
+*----- Reverse Each Word Lab*
 
 Wow! I actually was able to pass the first half of the test without wanting to rip my hair out.
 
@@ -173,7 +156,7 @@ def reverse_each_word(sentence)
     .join(" ")
 end
 ```
-
+*----- end lab*
 
 
 **Yield and Blocks**
@@ -208,7 +191,7 @@ now we are back in the method
 
 Yields can also take parameters. Like the ```.each``` method, the block gets passed a variable in the ```|  |``` which becomes the local variable of that block that we can operate on. The parameter passed to ```yield(parameter)``` would be passed to the varaible in the ``` | | ```.
 
-**My Collect Lab**
+*----- My Collect Lab*
 
 This lab was a good example on how to see the process of ```yield``` and making use of  ```binding.pry```.
 
@@ -262,6 +245,7 @@ def my_collect(array)
   collection
 end
 ```
+*----- end lab*
 
 Next up, more fun and games with Enumerators.
 
