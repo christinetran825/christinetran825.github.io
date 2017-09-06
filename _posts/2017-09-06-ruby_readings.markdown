@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Ruby Readings"
-date:   2017-09-06 16:25:25 +0000
+date:   2017-09-06 12:25:26 -0400
 ---
 
 
