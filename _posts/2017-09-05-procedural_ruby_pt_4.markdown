@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Procedural Ruby Pt. 4"
+title:  "Procedural Ruby Part 4 - Hashes & REGEX"
 date:   2017-09-05 03:54:05 -0400
 ---
 
 
-Finally, done with iterations. :]
+Finally, done with iterations, kind of. :]
 
 ![](http://i0.kym-cdn.com/photos/images/original/000/988/454/aa4.jpg)
 
@@ -13,24 +13,26 @@ I do like hashes. They're pretty simple and straight forward. Until we reach ite
 
 **Hashes**
 
+Hashes are like dictionaries. They're similar to arrays, but they're not lists. Like a dictionary, a hash holds keys (words) with values (definitions). These stored data are grouped into key/value pairs, where the values are related to the keys. It has no index as it's not a numbered list
+
 ```hash = {"key" => "value", "another_key" => "another value"}```
 
-* Like a dictionary, a hash holds keys (words) with values (definitions). These stored data are grouped into key/value pairs, where the values are related to the keys.
-
-* has no index as it's not a numbered list
-
-* A key can only be used once.
-
-* Adding a second key with the same key name will overwrite it like how we rename a variable.
-
-* **Creating a hash** ----- Similar to an array, we can simply say ```hash = {}```
-
-* **Gettting Data from Hashes** ----- We access values of a hash by using their key ```hash[key]```
-
-* **Adding more data** ----- Use ```[]=``` bracket-equals method ```hash_name[new_key_name]= new_value```
+   * A hash assigns values to keys so that values can be looked up by their key.
+   
+   * A key can only be used once. Adding a second key with the same key name will overwrite it like how we rename a variable.
+   
+   * *Creating a hash* : similar to an array, we can simply say ```hash = {}```
+   
+   * *Gettting Data from Hashes* : access values of a hash by using their key ```hash[key]```
+   
+   * *Adding more data* : use ```[]=``` bracket-equals method ```hash_name[new_key_name]= new_value```
+   
+   * *Calling on a Hash* : similar to calling on an array index but we call the hash's key
 
 
 **Symbols**
+
+A key in a hash is defined as a symbol.
 
 ``` :i_am_a_symbol ```
 
@@ -38,37 +40,37 @@ I do like hashes. They're pretty simple and straight forward. Until we reach ite
 
 * ```:symbol.object_id``` will output the same id as symbols are immutable (can't change).
 
-* **Using symbols as Hash keys** ----- Since symbols have the same object_id, they take up less memory. It's easier to use symbols than strings as strings take up more memory space.
+* *Using symbols as Hash keys* ----- Since symbols have the same object_id, they take up less memory. It's easier to use symbols than strings as strings take up more memory space.
 
-* When using symbols, we can replace the pointer (=>) in a key/value pair with a colon (:).
+* When using symbols, we can replace the pointer (=>) in a key/value pair with a colon (:)
 
      ```my_dictionary = {:word => "definition"}```    to this   ```my_dictionary = {word: "definition"}```
 
 
 **Hash Iterations**
 
+When iterating hashes, the PAIRS of the key/values are iterated. Similar to how we iterated arrays, the elements get passed into the block with local variables declared in the ``` |  | ```
+
 *Each*
 
-* Using ```.each``` with hash means we iterate over the PAIRS of the key/values.
+* Like with other ```.each``` iterations, the original collection is returned
 
-* Like with other ```.each``` iterations, the original collection is returned.
-
-```
-hash.each do |key, value|
-   puts "#{key}: #{value}"
-end
-```
+   ```
+	 hash.each do |key, value|
+	    puts "#{key}: #{value}"
+	 end
+	 ```
 
 *Collect or map*
 
-* Using ```.collect``` or ```.map``` means we get a return of the collected data that was passed into the block.
- 
-* Returns a new list of data.
+*  When used on a hash, the returned values are in an array
 
-* When using collect or map on a hash, we get an array of the returned values.
+*  Using ```.collect``` or ```.map``` means we get a return of the collected data that was passed into the block.
+
+*  Returns a new list of data.
 
 
------ **KEY-FOR-MIN-VALUES LAB** -----
+*-----  Key for Min Value Lab*
 
 OMG!!!! this one kicked me in the butt! I couldn't figure it out at all! I found some help via google and stackflow. Here's my code and explaination:
 
@@ -98,7 +100,7 @@ end
 
 # After the iteration, we include more logic. If the hash (name_hash) is an empty hash, we return the iteration which should be nil. If the hash is not empty, then we print the key of the lowest value, which is under value.last.
 ```
------ **end lab** -----
+*----- end lab*
 
 **Nested hashes**
 
@@ -115,23 +117,20 @@ the_foods = {
 			leafy: ["kale", "lettuce", "bok choy"]
 	}
 }
-```
 
-* the_foods = hash
+# the_foods = hash
 
-* key = :citrus and :berries
+# keys = :citrus and :berries
 
-* values = each key has a value of an array
+# values = each key has a value of an array
 
-* to get the first fruit in the citrus array, set a variable first.
+# to get the first fruit in the citrus array, set a variable first.
 
-```
-sours = fruits[:citrus]
+   sours = fruits[:citrus]
+   sours[1]
 
-sours[1]
-
-#output
-"lime"
+   #output
+   "lime"
 ```
 
 ***Adding data to Nested Hashes***
@@ -155,7 +154,6 @@ the_foods["Fruits"]["berries"] << "raspberries"
 #output
    berries: ["strawberries", "blueberries", "gooseberries", "blackberries", "raspberries"]
 ```
-
 
 OR
 
@@ -234,22 +232,16 @@ end
 
 **More Hash Methods**
 
-``` .values ```
-collects all the values in a hash
+``` .values ``` : collects all the values in a hash
 
-``` .keys ```
-collects all the keys in a hash
+``` .keys ``` : collects all the keys in a hash
 
-``` .min ```
-returns the key/value pair whose key is the **lowest** value.
+``` .min ``` : returns the key/value pair whose key is the **lowest** value. Note: Arrays can return two different things, it's most helpful for ``` .min ```
 
-Note: Arrays can return two different things, it's most helpful for ``` .min ```
-
-``` .flatten ```
-turns all the data into a flat array
+``` .flatten ``` : turns all the data into a flat array
 
 
------ **BUILDING-NESTED-HASHES LAB** ----- 
+*----- Building Nested Hash Lab ----- *
 
 This codealong lab was very fun. I liked how the use of characters from Romeo & Juliet made a great example of hashes and nested hashes.
 
@@ -279,9 +271,9 @@ def bonus
   }
 ......
 ```
------ **end lab** ----- 
+*----- end lab ----- *
 
------ **APPLES & HOLIDAYS LAB** ----- 
+*----- APPLES & HOLIDAYS LAB ----- *
 
 I really like learning about hashes. I find it easier to understand and to operate/code than arrays.
 
@@ -339,8 +331,7 @@ def all_supplies_in_holidays(holiday_hash)
   end
 end
 ```
-
------ **end lab** ----- 
+*----- end lab ----- *
 
 **REGEX**
 
@@ -399,7 +390,7 @@ Regrex sounds really cool. I'm having difficulties in writing the methods using 
 
 * using () in regex creates "groups" that can be reference in scan/match/grep methods as indexes in an array.
 
------**end REGREX** -----
+*----- end REGREX -----*
 
 **DONE with Procedural Ruby**
 
