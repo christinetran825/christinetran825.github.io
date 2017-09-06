@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Procedural Ruby Part. 1"
+title:  "Procedural Ruby Part. 1 - Methods & Iterations"
 date:   2017-09-01 01:17:04 -0400
 ---
 
