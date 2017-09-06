@@ -17,79 +17,70 @@ Here's what I'm understanding about these confounded methods.
 
 **Loops**
 
-* Tells program to do the same thing over and over again. It's not explicit (literal), it's abstract meaning we have to remove details
+* Tells program to do the same thing over a certain amount of time or until a certain condition is met. It's not explicit (literal), it's abstract in the way it removes details.
 
-* If there's no stopping point for the loop to make the we'll be taken into an infinite loop
-
-* To stop we must tell the loop to take a ```break``` OR have it ```count``` to a certain stopping point.
+* If there's no stopping point for the loop to make the we'll be taken into an infinite loop. To stop we must tell the loop to take a ```break``` OR have it ```count``` to a certain stopping point.
 
 
 **Arrays**
 
-* Stores a list of data.
-
-* Each data (called an element) has a position (index) in the array.
-
-* The very first position(index) starts at 0 because computers count starting from 0.
+* Stores a list of data. Each data (called an element) has a position (index) in the array that start at 0, because computers count starting from 0.
 
 * An array can be full of strings, numbers, or a combination of both.
 
 
-**We can ADD and REMOVE elements to/from an array**
+*Methods to access elements in Arrays and to manipulate Arrays*
 
-* ADDING
+* Adding
+
    * shovel ```<<```  : adds items to the END of the array
    
    * ```.push``` : add items to the END of the array (similar to  << )
    
    * ```.unshift``` : adds element to the FRONT of an array; when called the argument can be added
 
-* REMOVING
+* Removing
+
    * ```.pop``` : removes LAST item from the END of the array; returns the element that was removed
    
    * ```.shift``` : removes FIRST item from the FRONT of the array; returns the element that was removed
 
-Other methods to manipulate arrays - []([https://docs.ruby-lang.org/en/2.0.0/Array.html#method-i-delete_at)
+* Accessing elements
 
-
-**Working with Arrays**
-
-Accessing elements
    * ```.first``` : access first element
    
    * ```.last``` : access last element
+  
+* Other methods to manipulate arrays - (https://docs.ruby-lang.org/en/2.0.0/Array.html#method-i-delete_at)
 
-Here are a few of the methods we can use on an array:
+   * ```.sort``` : sorts the array in no particular order; returns a new array which is generally stored into another variable
 
-* ```.sort``` : sorts the array in no particular order; returns a new array which is generally stored into another variable
+   * ```.reverse``` : reverses the array
 
-* ```.reverse``` : reverses the array
+   * ```.include?``` : returns a boolean if the element submitted with the include?(element) is listed in the array
 
-* ```.include?``` : returns a boolean if the element submitted with the include?(element) is listed in the array
-
-* ```.size``` : returns the number of elements in the array; the return value is the actual number of elements in the array, starting from 1
+   * ```.size``` : returns the number of elements in the array; the return value is the actual number of elements in the array, starting from 1
 
 
 **Iteration and Abstraction (-_-)**
 
-***I have to remind myself of the following:***
+**Methods** are behaviors that objects are capable of. Most methods are posed as questions and return a relevant value while others are posed as commands that change the object/system.
 
-***Iteration** occurs when there's a **collection of data** (like an array) whose **individual members of that array will have something happen to it**.*
+**Iterators** are methods on a collection of data (arrays and hashes) that take a block code so individual members of that array will have something happen to it. These iterators like ``` .each ``` ``` .collect ``` and ``` .select ``` are **chainable** meaning there's added functionality on top of each method.
 
-***Looping** is telling the program to **do repeat something for a certain amount of time or until a certain condition is met**.*
+This is what I didn't understand about Enumerables/Enumerators. When calling a method on an object it returns another object which we can then call on another method onto that new object.
 
-
-Iterators are methods that are called on a collection (like an array) to loop over each element of the collection and do something to it.
-
-The example I've been learning about is the ```.each``` method.
+``` .each ```
 
 ```
 variable_name.each do |local_variable_name|
    #block body
 end
+```
 
 OR
 
+```
 variable_name.each { |local_variable_name| }
 ```
 
@@ -99,6 +90,7 @@ The variable.each will take each element one at a time through ech iteration thr
 
 The variable inside ```|  |``` has become a local variable and acts like an argument because it now takes the value of ```variable_name```'s elements from the collection of data.
 
+*----- Example 1 *
 ```
 array = ["apple", "pear", "orange"]
 
@@ -116,6 +108,7 @@ With the ```.each``` method, it always returns the original collection that was 
 
 Here's another example of a lab that I was able to solve with not a lot of trouble:
 
+*----- Lab 1*
 ```
 array = [1, 2, 3]
 def square_array(array)
@@ -131,12 +124,12 @@ end
 
 #since .each returns an original array, we need to call on a NEW array that would have the results of array's indices being squared. If not, we'll always get the original array [1, 2, 3]. That's why I declared new_array with an empty array which would later have array's indices being squared shovel into new_array
 ```
+*----- end Lab*
 
-That was a pretty simple lab, but the next lab and the lab after that for iteration lesson get more complicated. Maybe it's just me, but I find them tough.
 
-For example, the conference_badges lab had a method that I couldn't figure out without the help of the [ruby doc](http://ruby-doc.org/core-2.1.2/Array.html#method-i-each) and google.
+The problem is my not understanding **[Enumerators](http://ruby-doc.org/core-2.4.1/Enumerator.html#M000303).** 
 
-The problem was my not understanding **[Enumerators](http://ruby-doc.org/core-2.4.1/Enumerator.html#M000303).** Most methods have 2 forms: a block form and a non-block form which you can chain together.
+Most methods have 2 forms: a block form and a non-block form which you can chain together.
 
 1. ```.each_index```
 
@@ -170,6 +163,7 @@ array.each.with_index(2) {|index| puts "#{index}: #{array[index]}" }
 
 Taking what I learned so far about Enumerators, I still struggled trying to figure out the conference_badge lab. It took a long time, but I think I figured it out, since I passed the test.
 
+*----- Conference badget Lab *
 ```
 attendees = ["Edsger", "Ada", "Charles", "Alan", "Grace", "Linus", "Matz"]
 
@@ -190,7 +184,7 @@ end
    "Hello, Matz! You'll be assigned to room 7!"
 ]}
 ```
-
+*----- end Lab*
 
 That's all for now with my battle with Enumerators, enumerables, Loops, and iterations. There would be more on this with future labs I work on following this....
 
