@@ -108,6 +108,75 @@ def instance_method_name
 end
 ```
 
+*------ OO School Domain Lab*
+
+This was one of the hardest lab I've done. I'm still not sure if I understand domain models very well.
+
+* Part 1: The class School is initialized with a name and a roster that is an empty hash. The roster's hash key is the grade levels and the value of each key is an array of the students' names.
+
+* Part 2a: students are added to the school by called the ``` add_student ``` method that takes an arugment of the student's name and grade level. 
+
+* Part 2b: Since we're adding the student's name and grade level to the empty @roster hash in part 1 (the key/values are set up as an array), we can't push the arguments into the empty hash. So we have to create a new key and point it to an empty array...
+
+* Part 2c: then push the arguments into that array.
+ 
+* Part 3: The grade method takes an argument of a grade and returns all of the students in that grade.
+ 
+* Part 4: Get a sorted list of all the students where the strings in the student arrays are sorted ABC. We get the returned sorted students within their respective grade in hash key/value pairs
+
+```
+class School
+  attr_accessor :name, :roster
+
+  def initialize(name) #part 1
+    @name = name
+    @roster = {}
+  end
+
+  def add_student(student_name, grade) #part 2a
+    roster[grade] ||= [] #part 2b ||= is a conditional assignment operator (this is part of the memorization topic) the values will now be stored.
+    roster[grade] << student_name #part 2c
+  end
+
+  def grade(student_grade) #part 3
+    roster[student_grade]
+  end
+
+  def sort  #part 4
+    sorted = {} 
+    roster.each do |grade, students| #iterate through each grade and student
+      sorted[grade] = students.sort #grade is the key in the sorted hash. Value is the students sorted in ABC order.
+    end
+    sorted #the new sorted roster.
+  end
+end
+```
+
+*------ end lab*
+
+
+*----- OO Counting Sentences*
+
+* The last instance method of this lab was tough. I didn't know that we could call on ``` .split ``` with mutliple characters.
+
+* With some help, I found that we can use REGEX.
+
+```
+class String
+
+ ...
+
+  def count_sentences
+    #binding.pry
+    #new_split_sentence = self.split(/\.|\?|\!|\!!|\.../)
+    #new_split_sentence.size
+    self.split(/\.|\?|\!|\!!|\.../).delete_if { |word| word.size < 2}.size
+  end
+end
+```
+*----- end of lab*
+
+
 Hm.... So far I'm understanding how classes operate, create new objects (instances), and how to get and set functionality. I have a feeling it's going to get more complicated from here even though it's a really easy concept. -_-
 
 ![](http://i.imgur.com/DH1zh2j.gif)
