@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Object Oriented Programming (OOP) - Pt. 1"
-date:   2017-09-07 17:47:27 +0000
+date:   2017-09-07 13:47:28 -0400
 ---
 
 
@@ -41,21 +41,18 @@ To access an object's attribute which is stored in the ``` @attribute ``` intanc
 
 ```
 class className
-  def initialize(attribute)
-    @attribute = attribute
-  end
-		 
-	def attribute #getter method
-		@attribute
-  end
-		 
-	def attribute=(new_attribute) #setter method
-	  @attribute = new_attribute
-	end
-		 
-	def instance_method_name
-		@attribute #does something
-	end
+ def initialize(attribute)
+  @attribute = attribute
+ end
+ def attribute #getter method
+  @attribute
+ end
+ def attribute=(new_attribute) #setter method
+  @attribute = new_attribute
+ end
+ def instance_method_name
+  @attribute #does something
+ end
 end
 	 
 object_name = className.new("attribute")
@@ -77,22 +74,22 @@ Object Accessors helps us with the abstraction of instance methods.
 Here's the refactored code:
 
 ```
-   class className
-	   attr_accessor :attribute
+class className
+ attr_accessor :attribute
 	 
-     def initialize(attribute)
-      @attribute = attribute
-     end
-		end
-	 
-	 	def instance_method_name
-		  @attribute #does something
-		end
-	 
-   object_name = className.new("attribute")
-	 object_name.attribute
-	 object_name.attribute = "new_attribute"
-   ```
+ def initialize(attribute)
+  @attribute = attribute
+ end
+ 
+ def instance_method_name
+  @attribute #does something
+ end
+end
+
+object_name = className.new("attribute")
+object_name.attribute
+object_name.attribute = "new_attribute"
+```
 
 *How do we determine what is a reader or accessor?*
 
