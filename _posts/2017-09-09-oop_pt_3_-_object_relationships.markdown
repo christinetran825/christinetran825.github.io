@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "OOP Pt. 3 - Object Relationships"
-date:   2017-09-09 05:29:12 +0000
+title:  "OOP - Pt. 3 - Object Relationships"
+date:   2017-09-09 01:29:12 -0400
 ---
 
 
