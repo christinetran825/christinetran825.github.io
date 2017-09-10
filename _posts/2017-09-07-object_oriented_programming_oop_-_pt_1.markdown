@@ -106,26 +106,7 @@ Earlier I mentioned that **Instance Methods** are responsible for getter and set
 
 Going back to the class Dog example:
 
-```
-class Dog
-	 
-  def name=(dog_name)    #setter/writer method writes/sets the value of string "Lassie"
-	  @this_dogs_name = dog_name
-	end
-	
-	def name    #getter/reader method returns setter/writer method's value (@this_dogs_name = dog_name)
-	  @this_dogs_name
-	end
-end
-	 
-lassie = Dog.new      #initializing a new object/instance called lassie
-lassie.name = "Lassie"  #calling setter/writer method to equal a value of string "Lassie"
- 
-puts lassie.name   #calling getter/reader method again to see the value of string "Lassie"
-	 
-#output
-=> Lassie
-```
+
 
 To reduce the amount of getter and setter methods code and to simplify our class, we can use **Object Accessors.**
 
