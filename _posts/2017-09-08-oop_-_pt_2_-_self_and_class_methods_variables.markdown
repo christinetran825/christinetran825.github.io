@@ -67,17 +67,17 @@ class String
 
   def count_sentences
 	
-    #binding.pry
-    ##Using the binding.pry I split the sentence itself at the punctuations listed. This new splitted sentence would now equal to a new variable I called new_split_sentence
-		  #new_split_sentence = self.split(/\.|\?|\!|\!!|\.../) 
-      #new_split_sentence.size   #I then determined this new splitted sentences size as an array.
-		## Putting it all together, I didn't have to call on the new splitted sentence but on the sentence itself. From there I would delete any word size less than two characters.
-		
+    #binding.pry		
     self.split(/\.|\?|\!|\!!|\.../).delete_if { |word| word.size < 2}.size 
   end
 	
 end
 ```
+
+* Using the binding.pry I split the sentence itself at the punctuations listed. This new splitted sentence would now equal to a new variable I called new_split_sentence
+* new_split_sentence = self.split(/\.|\?|\!|\!!|\.../)
+* new_split_sentence.size   #I then determined this new splitted sentences size as an array.
+* Putting it all together, I didn't have to call on the new splitted sentence but on the sentence itself. From there I would delete any word size less than two characters.
 
 *----- end of lab*
 
@@ -112,12 +112,12 @@ class Album
   @@album_count = 0
  
   def initialize   #instance_method
-	  @@album_count += 1 #increment the number of albums by 1 every time a new album object is initialized
+	 @@album_count += 1 #increment the number of albums by 1 every time a new album object is initialized
 	end
 	
 	def self.count
-    @@album_count
-  end
+	 @@album_count
+	end
 	
 end
 
@@ -163,23 +163,23 @@ Determining the responsibility means we should also understand the two types or 
  
 Within the ``` initialize ``` method, we only get one copy of the initialized object. We can save the objects upon initialization by adding the ``` self ``` to it's class variable that's set as a collection (this could be an array or a hash). New instances can be added to this storage variable (as an array or hash) every time a new instance was created signaled by the ```self``` keyword in the ``` initialize ``` method. A class method can access and print out the individual instances stored in the class variable.
 
-  ```
-  class className
-    @@all = []
- 
-    def initialize(name)
-     @name = name
-     @@all << self   ## self is now referring to whichever instance the method is being called on, not the class itself - this is method scope
-    end
-		
-		def self.all   ## this self refers to the class on which the class method will be called - this is class scope
-		 @@all.each { |x| some code } ##method that exposes the value of a class variable making it accessible outside of the class
-		end
-  end
+```
+class className
+@@all = []
+
+ def initialize(name)
+  @name = name
+  @@all << self   #self is now referring to whichever instance the method is being called on, not the class itself - this is method scope
+ end
+
+ def self.all   #this self refers to the class on which the class method will be called - this is class scope
+  @@all.each { |x| some code } ##method that exposes the value of a class variable making it accessible outside of the class
+ end
+end
 	
-	className.all
-	=> outputs the @@all array
-  ```
+className.all
+=> outputs the @@all array
+```
 	
 Here's the lab example
 
@@ -187,20 +187,20 @@ Here's the lab example
 
 ```
 class Dog
-  attr_accessor :name   ## has a name
+  attr_accessor :name   #has a name
   
   @@all = [ ]   
 
-  def initialize(name)    ##.new initializes an argument of a name
+  def initialize(name)    #.new initializes an argument of a name
     @name = name
-    @@all << self     ##adds the new dog to the @@all array. The new dog instances/objects are called self
+    @@all << self     #adds new dog to the @@all array. New dog instances/objects are called self
   end
 
   def self.all
-    puts @@all.collect { |dog| dog.name } ##class method that puts out the name of each dog
+    puts @@all.collect { |dog| dog.name } #class method that puts out the name of each dog
   end
 
-  def self.clear_all   ##class method that empties the @@all array of all existing dogs
+  def self.clear_all   #class method that empties the @@all array of all existing dogs
     @@all.clear
   end
 end
@@ -224,7 +224,7 @@ As mentioned earlier, a class method exposes the value in a calss variable. It a
     
        * This action can be done within a class method like ``` .find_by_(instance attribute) ``` We're making the class itself responsible for knowing its instance
        
-       * Within a class method, we can call another class method with the class itself. ``` self ``` is now within the class method so self is class itself
+       * Within a class method, we can call another class method with the class itself. ``` self ``` is now within the class method so ``` self ``` is class itself
 
           ```
           class Person
@@ -249,7 +249,7 @@ As mentioned earlier, a class method exposes the value in a calss variable. It a
           Person.all.detect { |p| p.name ==  "Ada Lovelace" }
           ```
 
-3.** Custom Constructor**
+3. **Custom Constructor**
 
 Going back to the ``` .initalize ``` method, we learned that it's never modified. When an instance needs more functions/behaviors, we can extend the initialize method with a custom constructor.
 
@@ -259,9 +259,9 @@ Going back to the ``` .initalize ``` method, we learned that it's never modified
 
    ```
    def self.create(name) #custom constructor
-     song = self.new(name)
-	   song.save
-	   return song
+	  song = self.new(name)
+		song.save
+		return song
    end
    ```
 
