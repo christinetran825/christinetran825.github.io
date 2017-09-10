@@ -37,7 +37,8 @@ A class is like an outline. To build this outline, we usually begin by creating 
    fido #=> #<Dog:0x007fc52c2d7d20> #every object has its own id differenciating it from other objects
  
    snoopy = Dog.new
-   snoopy #=> #<Dog:0x007fc52c2d4170> #every object has its own id differenciating it from other objects
+   snoopy
+	 #=> <Dog:0x007fc52c2d4170> #every object has its own id differenciating it from other objects
    ```
 
 Once a new object is created, we determine whether or not their behavior is identical to other objects. If they are and the objects share the same class, we write **instance methods**.
@@ -52,16 +53,18 @@ Once a new object is created, we determine whether or not their behavior is iden
 
    ```
    class Dog
-     def bark
-       puts "Woof!"
-     end
+    def bark
+      puts "Woof!"
+    end
    end
  
-   fido = Dog.new    #initializing a new object/instance
-   fido.bark #> "Woof!"    #calling the instance method of bark onto the object/instanced we called fido
+   fido = Dog.new      #initializing a new object/instance
+   fido.bark 
+	 # => "Woof!"    #calling the instance method of bark onto the object/instanced we called fido
  
    snoopy = Dog.new     #initializing a new object/instance
-   snoopy.bark #> "Woof!"    #calling the instance method of bark onto the object/instanced we called snoopy
+   snoopy.bark 
+	 # => "Woof!"    #calling the instance method of bark onto the object/instanced we called snoopy
    ```
 
 When behaviors are defined, we must add attributes to the objects. To do that we create **Instance variables**.
@@ -83,7 +86,7 @@ When behaviors are defined, we must add attributes to the objects. To do that we
    end
 	 
 	 lassie = Dog.new      #initializing a new object/instance called lassie
-   lassie.name = "Lassie"  #calling the instance method of name onto the object/instanced we called lassie
+   lassie.name = "Lassie"  #calling the instance method  .name onto the object we called lassie
  
    puts lassie.name
 	 
@@ -104,25 +107,25 @@ Earlier I mentioned that **Instance Methods** are responsible for getter and set
 Going back to the class Dog example, the object's 
 
    ```
-   class Dog
-     
-		 def name=(dog_name)    #setter/writer method writes/sets the value of string "Lassie"
-       @this_dogs_name = dog_name    
-     end
- 
-     def name    #getter/reader method returns the setter/writer method's value (which is @this_dogs_name = dog_name)
-       @this_dogs_name    
-     end
-   end
+	 class Dog
+	 
+	   def name=(dog_name)    #setter/writer method writes/sets the value of string "Lassie"
+		  @this_dogs_name = dog_name
+		 end
+		 
+		 def name    #getter/reader method returns setter/writer method's value (@this_dogs_name = dog_name)
+		  @this_dogs_name
+		 end
+	 end
 	 
 	 lassie = Dog.new      #initializing a new object/instance called lassie
-   lassie.name = "Lassie"  #calling the setter/writer method to equal a value of string "Lassie"
+   lassie.name = "Lassie"  #calling setter/writer method to equal a value of string "Lassie"
  
-   puts lassie.name   #calling the getter/reader method again to see the value of string "Lassie"
+   puts lassie.name   #calling getter/reader method again to see the value of string "Lassie"
 	 
 	 #output
 	 => Lassie
-   ```
+	 ```
 
 To reduce the amount of getter and setter methods code and to simplify our class, we can use **Object Accessors.**
 
@@ -158,14 +161,14 @@ Here's the refactored code of the class Dog
 Below is an example of how the outline for a class with attr_readers & attr_writers can be built : 
   
 ```
-# the macro way
+#the macro way
 	
 class className
  attr_writer :attribute
  attr_reader :attribute
 end	
 		
-# the explicit way
+#the explicit way
 	
 class className
 	
@@ -178,7 +181,7 @@ class className
  end
 end
 
-# combining the writer and reader methods into one macro - attr_accessor
+#combining the writer and reader methods into one macro - attr_accessor
 
 class className
    attr_accessor :name
@@ -190,7 +193,7 @@ Here's a fun example of ``` attr_reader ```.
 *----- Meowing Cat lab*
 
 ```
-### the goal
+#the goal
 
 maru = Cat.new   #the instance maru was initialized with the class name and the .new method
 maru.name = "Maru"    #we want the method .name to give us the name of the object maru
@@ -202,7 +205,7 @@ maru.meow
 # => "meow!"
 # => nil
 
-### the code
+#the code
 
 class Cat
   attr_accessor :name   #with this accessor of :name, the setter and getter methods knew upon the object maru's initialization that its name would be called with the object.
