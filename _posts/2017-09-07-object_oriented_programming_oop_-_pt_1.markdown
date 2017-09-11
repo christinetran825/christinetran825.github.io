@@ -141,36 +141,34 @@ To reduce the amount of getter and setter methods code and to simplify our class
 
 Here's the refactored code of the class Dog
 
-   ```
-   class Dog
-     
-	 attr_accessor :name
-		 
-   end
-	 
-	 lassie = Dog.new      #initializing a new object/instance called lassie
-   lassie.name = "Lassie"  #calling the setter/writer method to equal a value of string "Lassie"
- 
-   puts lassie.name   #calling the getter/reader method again to see the value of string "Lassie"
-	 
-	 #output
-	 => Lassie
-	 ```
+```
+class Dog
+ attr_accessor :name
+end
+
+lassie = Dog.new      #initializing a new object/instance called lassie
+lassie.name = "Lassie"  #calling the setter/writer method to equal a value of string "Lassie"
+
+puts lassie.name   #calling the getter/reader method again to see the value of string "Lassie"
+
+output
+Lassie
+```
   
 Below is an example of how the outline for a class with attr_readers & attr_writers can be built : 
   
 ```
-#the macro way
-	
+- the macro way
+
 class className
  attr_writer :attribute
  attr_reader :attribute
 end	
 		
-#the explicit way
-	
+- the explicit way
+
 class className
-	
+
  def name=(name)
   @name = name
  end
@@ -180,10 +178,10 @@ class className
  end
 end
 
-#combining the writer and reader methods into one macro - attr_accessor
+- combining the writer and reader methods into one macro - attr_accessor
 
 class className
-   attr_accessor :name
+ attr_accessor :name
 end
 ```
 
