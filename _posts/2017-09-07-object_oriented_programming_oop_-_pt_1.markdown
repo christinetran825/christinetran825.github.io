@@ -73,26 +73,25 @@ When behaviors are defined, we must add attributes to the objects. To do that we
 
 * track different information on different objects who share the same class
 * they are scoped at the object (or instance) level, written with the @ symbol in front of it.
+```
+class Dog
+ def name=(dog_name)
+  @this_dogs_name = dog_name    #instance variable
+ end
+ 
+ def name
+  @this_dogs_name    #instance variable
+ end
+end
 
-   ```
-   class Dog
-     def name=(dog_name)
-       @this_dogs_name = dog_name    #instance variable
-     end
- 
-     def name
-       @this_dogs_name    #instance variable
-     end
-   end
-	 
-	 lassie = Dog.new      #initializing a new object/instance called lassie
-   lassie.name = "Lassie"  #calling the instance method  .name onto the object we called lassie
- 
-   puts lassie.name
-	 
-	 #output
-	 => Lassie
-   ```
+lassie = Dog.new      #initializing a new object/instance called lassie
+lassie.name = "Lassie"  #calling the instance method  .name onto the object we called lassie
+
+puts lassie.name
+
+#output
+=> Lassie
+```
 
 Earlier I mentioned that **Instance Methods** are responsible for getter and setter methods. This means that certain methods allows an instance variable to be defined and stored.
 
@@ -106,7 +105,25 @@ Earlier I mentioned that **Instance Methods** are responsible for getter and set
 
 Going back to the class Dog example:
 
+```
+class Dog
+ def name=(dog_name)    #setter/writer method writes/sets the value of string "Lassie"
+ @this_dogs_name = dog_name
+ end
 
+ def name    #getter/reader method returns setter/writer method's value (@this_dogs_name = dog_name)
+  @this_dogs_name
+ end
+end
+ 
+lassie = Dog.new      #initializing a new object/instance called lassie
+lassie.name = "Lassie"  #calling setter/writer method to equal a value of string "Lassie"
+ 
+puts lassie.name   #calling getter/reader method again to see the value of string "Lassie"
+ 
+#output
+=> Lassie
+```
 
 To reduce the amount of getter and setter methods code and to simplify our class, we can use **Object Accessors.**
 
