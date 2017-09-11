@@ -65,19 +65,20 @@ class String
 
  ... other codes
 
-  def count_sentences
-	
-    #binding.pry		
-    self.split(/\.|\?|\!|\!!|\.../).delete_if { |word| word.size < 2}.size 
-  end
-	
+ def count_sentences
+  #binding.pry
+	self.split(/\.|\?|\!|\!!|\.../).delete_if { |word| word.size < 2}.size
+ end
 end
 ```
 
 * Using the binding.pry I split the sentence itself at the punctuations listed. This new splitted sentence would now equal to a new variable I called new_split_sentence
-* new_split_sentence = self.split(/\.|\?|\!|\!!|\.../)
-* new_split_sentence.size   #I then determined this new splitted sentences size as an array.
-* Putting it all together, I didn't have to call on the new splitted sentence but on the sentence itself. From there I would delete any word size less than two characters.
+
+* new_split_sentence = ``` self.split(/\.|\?|\!|\!!|\.../) ```
+
+* new_split_sentence.size   #I then determined this new splitted sentences size as an array
+
+* Putting it all together, I didn't have to call on the new splitted sentence but on the sentence itself. From there I would delete any word size less than two characters
 
 *----- end of lab*
 
@@ -86,16 +87,21 @@ On the subject of self, it can call on its own variable and method similar to ho
 **Class variables**
 
 * stores information about the class as a whole and is accessible to the entire class because it has **class scope**
-* written with two @@ symbols.
-* a class level variable is used for instance memoization (remembering all instances of a class).
+
+* written with two @@ symbols
+
+* a class level variable is used for instance memoization (remembering all instances of a class)
+
 * can be equal to an empty array as they store lists of data.
    
     ``` @@class_variable_name ```
 
 **Class methods**
 
-* methods that can be called on the class directly without having to instantiate any objects.
-* stores behavior that doesn't relate to individual objects.
+* methods that can be called on the class directly without having to instantiate any objects
+
+* stores behavior that doesn't relate to individual objects
+
 * usually denoted with ```self``` in the method name
    
     ```
@@ -108,17 +114,17 @@ On the subject of self, it can call on its own variable and method similar to ho
 
 ```
 class Album
+
+ @@album_count = 0
  
-  @@album_count = 0
+ def initialize   #instance_method
+  @@album_count += 1 #increment the number of albums by 1 every time a new album object is initialized
+ end
  
-  def initialize   #instance_method
-	 @@album_count += 1 #increment the number of albums by 1 every time a new album object is initialized
-	end
-	
-	def self.count
-	 @@album_count
-	end
-	
+ def self.count
+  @@album_count
+ end
+
 end
 
 Album.new
@@ -147,9 +153,9 @@ Determining the responsibility means we should also understand the two types or 
 
 **Public Methods**
 
-* can be called outside the scope of the class declaration, like on the instance of the class or the class itself. They are explicit receivers.
+* can be called outside the scope of the class declaration, like on the instance of the class or the class itself. They are explicit receivers
 
-* ``` def self.all ``` defines a class method that exposes the value in a class variable ``` @@all ``` It acts as a class reader for class variables.
+* ``` def self.all ``` defines a class method that exposes the value in a class variable ``` @@all ``` It acts as a class reader for class variables
 
 **Private Methods**
 
