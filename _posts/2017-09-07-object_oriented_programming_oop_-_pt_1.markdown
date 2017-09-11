@@ -90,8 +90,8 @@ lassie.name = "Lassie"  #calling the instance method  .name onto the object we c
 
 puts lassie.name
 
-#output
-=> Lassie
+output 
+Lassie
 ```
 
 Earlier I mentioned that **Instance Methods** are responsible for getter and setter methods. This means that certain methods allows an instance variable to be defined and stored.
