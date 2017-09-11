@@ -73,6 +73,7 @@ When behaviors are defined, we must add attributes to the objects. To do that we
 
 * track different information on different objects who share the same class
 * they are scoped at the object (or instance) level, written with the @ symbol in front of it.
+
 ```
 class Dog
  def name=(dog_name)
