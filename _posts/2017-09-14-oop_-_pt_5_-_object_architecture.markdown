@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "OOP - Pt. 5 - Object Architecture"
-date:   2017-09-14 18:30:21 +0000
+date:   2017-09-14 14:30:21 -0400
 ---
 
 Here's what I've learned so far on the last big section of OOP.
